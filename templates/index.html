@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Hand Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Poker Hand Classifier</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <div class="input-group">
+                    <span>Card 1 Rank:</span>
+                    <input type="number" name="card1_rank" min="1" max="13" required>
+                </div>
+                <div class="input-group">
+                    <span>Card 1 Suit:</span>
+                    <div class="suit-buttons">
+                        <input type="radio" id="card1_suit_spades" name="card1_suit" value="1" required>
+                        <label for="card1_suit_spades">♠</label>
+                        <input type="radio" id="card1_suit_clubs" name="card1_suit" value="2">
+                        <label for="card1_suit_clubs">♣</label>
+                        <input type="radio" id="card1_suit_hearts" name="card1_suit" value="3">
+                        <label for="card1_suit_hearts">♥</label>
+                        <input type="radio" id="card1_suit_diamonds" name="card1_suit" value="4">
+                        <label for="card1_suit_diamonds">♦</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the form group for other cards -->
+            <div class="form-group">
+                <div class="input-group">
+                    <span>Card 2 Rank:</span>
+                    <input type="number" name="card2_rank" min="1" max="13" required>
+                </div>
+                <div class="input-group">
+                    <span>Card 2 Suit:</span>
+                    <div class="suit-buttons">
+                        <input type="radio" id="card2_suit_spades" name="card2_suit" value="1" required>
+                        <label for="card2_suit_spades">♠</label>
+                        <input type="radio" id="card2_suit_clubs" name="card2_suit" value="2">
+                        <label for="card2_suit_clubs">♣</label>
+                        <input type="radio" id="card2_suit_hearts" name="card2_suit" value="3">
+                        <label for="card2_suit_hearts">♥</label>
+                        <input type="radio" id="card2_suit_diamonds" name="card2_suit" value="4">
+                        <label for="card2_suit_diamonds">♦</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span>Card 3 Rank:</span>
+                    <input type="number" name="card3_rank" min="1" max="13" required>
+                </div>
+                <div class="input-group">
+                    <span>Card 3 Suit:</span>
+                    <div class="suit-buttons">
+                        <input type="radio" id="card3_suit_spades" name="card3_suit" value="1" required>
+                        <label for="card3_suit_spades">♠</label>
+                        <input type="radio" id="card3_suit_clubs" name="card3_suit" value="2">
+                        <label for="card3_suit_clubs">♣</label>
+                        <input type="radio" id="card3_suit_hearts" name="card3_suit" value="3">
+                        <label for="card3_suit_hearts">♥</label>
+                        <input type="radio" id="card3_suit_diamonds" name="card3_suit" value="4">
+                        <label for="card3_suit_diamonds">♦</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span>Card 4 Rank:</span>
+                    <input type="number" name="card4_rank" min="1" max="13" required>
+                </div>
+                <div class="input-group">
+                    <span>Card 4 Suit:</span>
+                    <div class="suit-buttons">
+                        <input type="radio" id="card4_suit_spades" name="card4_suit" value="1" required>
+                        <label for="card4_suit_spades">♠</label>
+                        <input type="radio" id="card4_suit_clubs" name="card4_suit" value="2">
+                        <label for="card4_suit_clubs">♣</label>
+                        <input type="radio" id="card4_suit_hearts" name="card4_suit" value="3">
+                        <label for="card4_suit_hearts">♥</label>
+                        <input type="radio" id="card4_suit_diamonds" name="card4_suit" value="4">
+                        <label for="card4_suit_diamonds">♦</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span>Card 5 Rank:</span>
+                    <input type="number" name="card5_rank" min="1" max="13" required>
+                </div>
+                <div class="input-group">
+                    <span>Card 5 Suit:</span>
+                    <div class="suit-buttons">
+                        <input type="radio" id="card5_suit_spades" name="card5_suit" value="1" required>
+                        <label for="card5_suit_spades">♠</label>
+                        <input type="radio" id="card5_suit_clubs" name="card5_suit" value="2">
+                        <label for="card5_suit_clubs">♣</label>
+                        <input type="radio" id="card5_suit_hearts" name="card5_suit" value="3">
+                        <label for="card5_suit_hearts">♥</label>
+                        <input type="radio" id="card5_suit_diamonds" name="card5_suit" value="4">
+                        <label for="card5_suit_diamonds">♦</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
